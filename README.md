@@ -4,6 +4,8 @@
 - Open the file python-3.10.11.exe
 - IMPORTANT: Tick the box that says “Add Python to PATH”
 - Click through the installer
+- Run the "Dependencies.bat" file
+
   
 2. Open DaVinci Resolve
 - Start DaVinci Resolve
