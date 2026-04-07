@@ -29,3 +29,5 @@
 - Didn’t tick “Add Python to PATH” → it won’t work
 - Didn’t open Fusion page → it won’t connect
 - Wrong DaVinci path → also won’t work
+
+If all else fails See [TROUBLESHOOTING-FFlow.md](TROUBLESHOOTING-FFlow.md)
