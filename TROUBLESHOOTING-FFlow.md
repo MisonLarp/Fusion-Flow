@@ -131,10 +131,10 @@ Reach out in the help channel on the **CloudVFX Discord server**. To help us ass
 | 1 | Set the installation path manually in FFlow | FFlow |
 | 2 | Remove all Python versions + reinstall 3.10.11 | [Geek Uninstaller](https://geekuninstaller.com/) |
 | 3 | Deep cleanup of remaining Python files | [Everything](https://www.voidtools.com/) |
-| 4 | Contact support | CloudVFX Discord |
+| 4 | Contact support | Cloud City Discord |
 
 <br>
 
-*CloudVFX · FFlow Troubleshooting Guide*
+*Cloud City · FFlow Troubleshooting Guide*
 
 </div>
