@@ -70,9 +70,58 @@ If the issue persists, there is likely a conflicting or incomplete Python instal
 > [!CAUTION]
 > If any entry **cannot be deleted**, right-click it and select **Force Remove** to forcibly eliminate it from the registry.
 
-5. **Restart your computer** before continuing.
+5. **Do not restart yet** — continue with the steps below first.
 
-### 2b. Install Python 3.10.11
+<br>
+
+### 2b. Clean Python Registry Keys Manually
+
+> [!NOTE]
+> This step is **required** if you previously uninstalled Python using Windows' built-in uninstaller or the Add/Remove Programs panel instead of Geek Uninstaller. Those methods often leave registry entries behind that cause conflicts with fresh installations.
+
+Open **Registry Editor** (`Win + R` → type `regedit` → press Enter), then navigate to and **delete** the following keys if they exist:
+
+```
+HKEY_LOCAL_MACHINE\SOFTWARE\Python
+HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Python
+HKEY_CURRENT_USER\SOFTWARE\Python
+```
+
+Additionally, check and clean these keys if present:
+
+```
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Environment
+```
+> Inside this key, look for any `PYTHONPATH`, `PYTHONHOME`, or `PYTHONSTARTUP` **values** and delete them individually — do **not** delete the key itself.
+
+```
+HKEY_CURRENT_USER\Environment
+```
+> Same as above — remove only Python-related environment variable entries, not the key.
+
+> [!CAUTION]
+> Only delete the **Python-specific keys and values** listed above. Do not delete or modify anything else in the registry.
+
+Once done, **restart your computer** before continuing.
+
+<br>
+
+### 2c. Disable Python App Execution Aliases
+
+Windows includes a feature called **App Execution Aliases** that can redirect `python.exe` and `python3.exe` calls to the Microsoft Store instead of your actual installation. This silently breaks FFlow's ability to locate Python.
+
+**To disable it:**
+
+1. Open **Settings** → **Apps** → **Advanced app settings** → **App execution aliases**.
+2. Find the entries named **Python** and **Python3** (they may appear as `python.exe` and `python3.exe`).
+3. Toggle **both of them OFF**.
+
+> [!WARNING]
+> If these aliases are left enabled, Windows may intercept Python calls even after a correct installation, causing FFlow to report that Python is not found or not responding.
+
+<br>
+
+### 2d. Install Python 3.10.11
 
 1. Use the **Python 3.10.11** installer included in the FFlow folder.
 2. On the first screen of the installer, check this option **before** clicking Install Now:
@@ -104,7 +153,7 @@ If residual files from previous Python installations remain and Geek Uninstaller
 > ```
 > rd /s /q "C:\full\path\to\folder"
 > ```
-> Alternatively, use a tool like **[Unlocker](https://unlocker.en.softonic.com/)** to force-remove locked files.
+> Alternatively, use **[System Informer](https://github.com/winsiderss/systeminformer/releases)** (open source, formerly Process Hacker) to identify which process is locking the file, close its handle, and then delete it normally.
 
 4. Reinstall **Python 3.10.11** from the FFlow folder, making sure to check **Add Python 3.10 to PATH** as in the previous step.
 
@@ -129,12 +178,15 @@ Reach out in the help channel on the **CloudVFX Discord server**. To help us ass
 |:----:|--------|---------------|
 | — | Enable External Scripting in DaVinci Resolve | DaVinci Resolve |
 | 1 | Set the installation path manually in FFlow | FFlow |
-| 2 | Remove all Python versions + reinstall 3.10.11 | [Geek Uninstaller](https://geekuninstaller.com/) |
+| 2a | Remove all Python versions | [Geek Uninstaller](https://geekuninstaller.com/) |
+| 2b | Clean Python registry keys manually | regedit |
+| 2c | Disable Python App Execution Aliases | Windows Settings |
+| 2d | Reinstall Python 3.10.11 | Python 3.10.11 (included) |
 | 3 | Deep cleanup of remaining Python files | [Everything](https://www.voidtools.com/) |
-| 4 | Contact support | Cloud City Discord |
+| 4 | Contact support | CloudVFX Discord |
 
 <br>
 
-*Cloud City · FFlow Troubleshooting Guide*
+*CloudVFX · FFlow Troubleshooting Guide*
 
 </div>
